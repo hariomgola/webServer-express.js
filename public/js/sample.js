@@ -1,0 +1,1 @@
+console.log('Index.html javascript is loaded or coming')
