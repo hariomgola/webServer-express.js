@@ -34,6 +34,7 @@ const expressStaticCall = () => {
 
 const callingDynamicHBS = () => {
     app.get('', (req, res) => {
+        console.log(chalk.yellow('     -> Calling default handler'))
         res.render('index', {
             ApplicationName : 'Express.js Application',
             name: 'Hari',
@@ -44,6 +45,7 @@ const callingDynamicHBS = () => {
     })
 
     app.get('/about', (req, res) => {
+        console.log(chalk.yellow('     -> Calling about handler'))
         res.render('about', {
             ApplicationName : 'About Me',
             title: 'About Me',
@@ -51,6 +53,18 @@ const callingDynamicHBS = () => {
             name: 'Hari',
             copyright,
             favLine:'I see it.I code it promise it will break.'
+        })
+    })
+
+    // error which check for 404 about page sing same wild cart character
+    app.get('/about/*',(req,res)=>{
+        res.send('404 about page')
+    })
+    // route for 404 error and to matchanything express provide wild cart character *
+    app.get('*',(req,res)=>{
+        console.log(chalk.yellow('     -> Calling error handler'))
+        res.render('error',{
+            error:`Either you aren't cool enough to visit this page or it doesn't exist.....`
         })
     })
 }
