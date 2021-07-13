@@ -1,6 +1,6 @@
 /**
  -> Creating node js Server using express js (node.js package)
- 
+  
  -> Creating and run node.js server
     - firstly create or initialize using `npm init command`
     - Install chalk and nodemon npm library using command `npm i chalk` and `npm i nodemon`
@@ -60,6 +60,9 @@
  -> Install handle bars using command 'npm i handlebars'
  -> or use hbs librarys its uses handlebar library behind the scene 'npm i hbs'
 
+ -> Now we are going to use partials with handle bars
+    - Partial as its name suggest allow you to create a little template which is part of a bigger web page
+    - firstly require or load hbs into the application
 
 
 

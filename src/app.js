@@ -2,50 +2,61 @@
 const express = require('express');
 const chalk = require('chalk');
 const path = require('path');
+const hbs = require('hbs');
+const copyright = 'Copyright @ 2021 Hariom Gola. All Right Reserved Not to be Used for Making profit';
 
 // express has only one function in it and provide various method to use
 const app = express()
-// telling express about hbs engine
-app.set('view engine', 'hbs')
 
+// printing 2 special variable nodejs provide
 // Both these value are provided wrapper function and printing their value
 console.log(__dirname);
 console.log(__filename);
-console.log(chalk.yellow(path.join(__dirname, '../public')))
 
-// Updating view location
-// const viewDirectoryPath = path.join(__dirname,'../template');
-// app.set('view',viewDirectoryPath);
+// Creating directory path
+const publicDirectoryPath = path.join(__dirname, '../public');
+const viewDirectoryPath = path.join(__dirname, '../template/views');
+const partialDirectoryPath = path.join(__dirname, '../template/partial');
+
+
+// telling express about hbs engine
+app.set('view engine', 'hbs')
+app.set('views', viewDirectoryPath);
+hbs.registerPartials(partialDirectoryPath)
 
 
 
 
 const expressStaticCall = () => {
-    // express.static() is a function and its take a absolute path to work on 
-    let publicDirectoryPath = path.join(__dirname, '../public');
+    // express.static() is a function and its take a absolute path to work on
     app.use(express.static(publicDirectoryPath))
 }
 
 const callingDynamicHBS = () => {
     app.get('', (req, res) => {
         res.render('index', {
+            ApplicationName : 'Express.js Application',
             name: 'Hari',
             frontend: 'Angular',
-            backend: 'node.js'
+            backend: 'node.js',
+            copyright
         })
     })
 
-    app.get('/about',(req,res)=>{
-        res.render('about',{
-            title:'About Me',
-            name:'Hari',
-
+    app.get('/about', (req, res) => {
+        res.render('about', {
+            ApplicationName : 'About Me',
+            title: 'About Me',
+            About:'Hi Hariom this Side,I am a full-stack web developer.',
+            name: 'Hari',
+            copyright,
+            favLine:'I see it.I code it promise it will break.'
         })
     })
 }
 
 
-// function for responding static text 
+// function for responding static text
 const expressCustomHandler = () => {
     // app.get is used to get the route and also accept second function which accept 2 parameter req(request) and res(response)
     app.get('', (req, res) => {
@@ -101,4 +112,3 @@ const startExpress = () => {
 expressStaticCall();
 callingDynamicHBS();
 startExpress();
-

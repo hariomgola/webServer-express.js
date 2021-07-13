@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>About @hariomgola</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/sample.js"></script>
+    <link rel="shortcut icon" href="#">
+
+    <!--Importing google font api-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fuggles&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tourney:wght@200&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!--Importing partial code-->
+    {{>header}}
+    <!--Importing partial code with handle bars-->
+    <h2>
+        {{About}}
+    </h2>
+    <h1>
+        One line to descibe me : {{favLine}}
+    </h1>
+    <img src="\img\robot.jpg">
+
+    <!--Importing footer code-->
+    {{>footer}}
+    <!--Importing footer code with handle bars-->
+</body>
+
+</html>
