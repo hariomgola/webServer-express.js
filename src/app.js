@@ -36,7 +36,7 @@ const callingDynamicHBS = () => {
     app.get('', (req, res) => {
         console.log(chalk.yellow('     -> Calling default handler'))
         res.render('index', {
-            ApplicationName : 'Express.js Application',
+            ApplicationName: 'Express.js Application',
             name: 'Hari',
             frontend: 'Angular',
             backend: 'node.js',
@@ -47,24 +47,34 @@ const callingDynamicHBS = () => {
     app.get('/about', (req, res) => {
         console.log(chalk.yellow('     -> Calling about handler'))
         res.render('about', {
-            ApplicationName : 'About Me',
+            ApplicationName: 'About Me',
             title: 'About Me',
-            About:'Hi Hariom this Side,I am a full-stack web developer.',
+            About: 'Hi Hariom this Side,I am a full-stack web developer.',
             name: 'Hari',
             copyright,
-            favLine:'I see it.I code it promise it will break.'
+            favLine: 'I see it.I code it promise it will break.'
+        })
+    })
+
+    // use below url to get data 
+    // http://localhost:3000/data?dumyData=Hari
+    // http://localhost:3000/data?dumyData=codeme
+    app.get('/data', (req, res) => {
+        console.log(chalk.yellow('     -> Calling data handler'))
+        res.send({
+            data: req.query.dumyData
         })
     })
 
     // error which check for 404 about page sing same wild cart character
-    app.get('/about/*',(req,res)=>{
-        res.send('404 about page')
+    app.get('/about/*', (req, res) => {
+        res.send('404 about page Different from global error page')
     })
     // route for 404 error and to matchanything express provide wild cart character *
-    app.get('*',(req,res)=>{
+    app.get('*', (req, res) => {
         console.log(chalk.yellow('     -> Calling error handler'))
-        res.render('error',{
-            error:`Either you aren't cool enough to visit this page or it doesn't exist.....`
+        res.render('error', {
+            error: `Either you aren't cool enough to visit this page or it doesn't exist.....`
         })
     })
 }

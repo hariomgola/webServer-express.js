@@ -64,6 +64,10 @@
     - Partial as its name suggest allow you to create a little template which is part of a bigger web page
     - firstly require or load hbs into the application
 
+ -> Creating Api
+    - npm i request
+    - start project node src/app.js -e js,hbs
+
 
 
 
