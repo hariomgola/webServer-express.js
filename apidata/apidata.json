@@ -1,0 +1,15 @@
+{
+    "wheatherapi": {
+        "SiteUrl": "https://weatherstack.com/",
+        "url": "http://api.weatherstack.com/current",
+        "Key": "0a64e2610865af7f3ce1cd49d4723220",
+        "demo": "http://api.weatherstack.com/current?access_key=0a64e2610865af7f3ce1cd49d4723220&query=New%20York"
+    },
+    "mapboxapi": {
+        "SiteUrl": "https://mapbox.com/",
+        "url": "https://api.mapbox.com/geocoding/v5/mapbox.places/",
+        "Key": "pk.eyJ1IjoiZHVndWFyeWEiLCJhIjoiY2txdGk3dnc1MXJ0MzJ6cWhnbjNteHFicyJ9.TXLwkaw0jsrFPf4wVigG7A",
+        "demo": "https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1IjoiZHVndWFyeWEiLCJhIjoiY2txdGk3dnc1MXJ0MzJ6cWhnbjNteHFicyJ9.TXLwkaw0jsrFPf4wVigG7A"
+    },
+    "Owner Message (hariom gola)":"As its Free Api only use for educational purpose.stealing keys is a criminal offence strict action will be taken."
+}

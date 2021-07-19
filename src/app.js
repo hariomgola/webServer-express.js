@@ -5,6 +5,10 @@ const path = require('path');
 const hbs = require('hbs');
 const copyright = 'Copyright @ 2021 Hariom Gola. All Right Reserved Not to be Used for Making profit';
 
+// importing wheather api data
+const geocodeApi = require('../utils/geocode');
+const wheatherApi = require('../utils/wheather');
+
 // express has only one function in it and provide various method to use
 const app = express()
 
@@ -63,6 +67,33 @@ const callingDynamicHBS = () => {
         console.log(chalk.yellow('     -> Calling data handler'))
         res.send({
             data: req.query.dumyData
+        })
+    })
+
+    // Creating wheather request
+    app.get('/weather',(req,res)=>{
+        console.log(chalk.yellow('     -> Calling Weather handler'))
+        // getting query
+        if(!req.query.address){
+            return res.send({
+                error:'Please provide valid address'
+            })
+        }
+
+        // using es6 feature to assign default value to req.query.address 
+        geocodeApi.geocode(req.query.address, (error,geoData) => {
+            if (error)
+                return console.log(chalk.red(`  Error - > ${error} `));
+    
+    
+            wheatherApi.wheatherapi(geoData, (error, wheatherData) => {
+                if (error)
+                    return console.log(chalk.red(`  Error - > ${error} `));
+
+                res.send({
+                    'weather Data': wheatherData
+                })
+            })
         })
     })
 
